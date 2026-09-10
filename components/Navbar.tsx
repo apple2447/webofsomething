@@ -5,21 +5,28 @@ import { useState } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleCloseAll = () => {
+    setIsOpen(false);
+    setIsDropdownOpen(false);
+  };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    // เพิ่ม fixed-top และ z-3 เพื่อให้ล็อกอยู่บนสุดและลอยเหนือองค์ประกอบอื่น
+    <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top z-3" data-bs-theme="dark">
       <div className="container">
 
         {/* Logo */}
         <Link
           href="/"
-          className="navbar-brand fw-bold"
-          onClick={() => setIsOpen(false)}
+          className="navbar-brand fw-bold text-white"
+          onClick={handleCloseAll}
         >
-          MyApp
+          งานกลุ่มน่าจะวุ่นวาย
         </Link>
 
-        {/* Mobile Button */}
+        {/* Mobile Button (Hamburger) */}
         <button
           type="button"
           className="navbar-toggler"
@@ -34,9 +41,7 @@ export default function Navbar() {
         {/* Menu */}
         <div
           id="mainNavbar"
-          className={`collapse navbar-collapse ${
-            isOpen ? "show" : ""
-          }`}
+          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
         >
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
@@ -44,10 +49,10 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 href="/"
-                className="nav-link"
-                onClick={() => setIsOpen(false)}
+                className="nav-link text-white"
+                onClick={handleCloseAll}
               >
-                Home
+                หน้าแรก
               </Link>
             </li>
 
@@ -55,8 +60,8 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 href="/products"
-                className="nav-link"
-                onClick={() => setIsOpen(false)}
+                className="nav-link text-white"
+                onClick={handleCloseAll}
               >
                 Products
               </Link>
@@ -66,8 +71,8 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 href="/blog"
-                className="nav-link"
-                onClick={() => setIsOpen(false)}
+                className="nav-link text-white"
+                onClick={handleCloseAll}
               >
                 Blog
               </Link>
@@ -76,46 +81,42 @@ export default function Navbar() {
             {/* Services Dropdown */}
             <li className="nav-item dropdown">
               <button
-                className="nav-link dropdown-toggle btn btn-link"
                 type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                className="nav-link dropdown-toggle btn border-0 text-white bg-transparent shadow-none align-baseline"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                aria-expanded={isDropdownOpen}
               >
                 Services
               </button>
 
-              <ul className="dropdown-menu">
-
+              <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
                 <li>
                   <Link
                     href="/services/web"
                     className="dropdown-item"
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleCloseAll}
                   >
                     Web Development
                   </Link>
                 </li>
-
                 <li>
                   <Link
                     href="/services/ai"
                     className="dropdown-item"
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleCloseAll}
                   >
                     AI
                   </Link>
                 </li>
-
                 <li>
                   <Link
                     href="/services/robotics"
                     className="dropdown-item"
-                    onClick={() => setIsOpen(false)}
+                    onClick={handleCloseAll}
                   >
                     Robotics
                   </Link>
                 </li>
-
               </ul>
             </li>
 
@@ -123,8 +124,8 @@ export default function Navbar() {
             <li className="nav-item">
               <Link
                 href="/about"
-                className="nav-link"
-                onClick={() => setIsOpen(false)}
+                className="nav-link text-white"
+                onClick={handleCloseAll}
               >
                 About
               </Link>
@@ -133,24 +134,22 @@ export default function Navbar() {
           </ul>
 
           {/* Right Menu */}
-          <div className="d-flex gap-2">
-
+          <div className="d-flex gap-2 my-2 my-lg-0">
             <Link
               href="/login"
               className="btn btn-outline-light"
-              onClick={() => setIsOpen(false)}
+              onClick={handleCloseAll}
             >
-              Login
+              เข้าสู่ระบบ
             </Link>
 
             <Link
               href="/register"
               className="btn btn-primary"
-              onClick={() => setIsOpen(false)}
+              onClick={handleCloseAll}
             >
-              Register
+              ลงชื่อเข้าใช้
             </Link>
-
           </div>
         </div>
       </div>
