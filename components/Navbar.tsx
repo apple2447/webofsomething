@@ -13,23 +13,15 @@ export default function Navbar() {
   };
 
   return (
-    // เพิ่ม fixed-top และ z-3 เพื่อให้ล็อกอยู่บนสุดและลอยเหนือองค์ประกอบอื่น
-    <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top z-3" data-bs-theme="dark">
+    <nav className="navbar site-navbar navbar-expand-lg border-bottom border-body fixed-top z-3" data-bs-theme="dark">
       <div className="container">
-
-        {/* Logo */}
-        <Link
-          href="/"
-          className="navbar-brand fw-bold text-white"
-          onClick={handleCloseAll}
-        >
+        <Link href="/" className="navbar-brand site-navbar__brand" onClick={handleCloseAll}>
           งานกลุ่มน่าจะวุ่นวาย
         </Link>
 
-        {/* Mobile Button (Hamburger) */}
         <button
           type="button"
-          className="navbar-toggler"
+          className="navbar-toggler site-navbar__toggler"
           onClick={() => setIsOpen(!isOpen)}
           aria-controls="mainNavbar"
           aria-expanded={isOpen}
@@ -38,116 +30,65 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Menu */}
-        <div
-          id="mainNavbar"
-          className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
-        >
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-            {/* Home */}
+        <div id="mainNavbar" className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
+          <ul className="navbar-nav site-navbar__links me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link
-                href="/"
-                className="nav-link text-white"
-                onClick={handleCloseAll}
-              >
+              <Link href="/" className="nav-link site-navbar__link" onClick={handleCloseAll}>
                 หน้าแรก
               </Link>
             </li>
-
-            {/* Products */}
             <li className="nav-item">
-              <Link
-                href="/products"
-                className="nav-link text-white"
-                onClick={handleCloseAll}
-              >
-                Products
+              <Link href="/products" className="nav-link site-navbar__link" onClick={handleCloseAll}>
+                ผลิตภัณฑ์
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/blog" className="nav-link site-navbar__link" onClick={handleCloseAll}>
+                ประกาศ
               </Link>
             </li>
 
-            {/* Blog */}
-            <li className="nav-item">
-              <Link
-                href="/blog"
-                className="nav-link text-white"
-                onClick={handleCloseAll}
-              >
-                Blog
-              </Link>
-            </li>
-
-            {/* Services Dropdown */}
             <li className="nav-item dropdown">
               <button
                 type="button"
-                className="nav-link dropdown-toggle btn border-0 text-white bg-transparent shadow-none align-baseline"
+                className="nav-link site-navbar__link dropdown-toggle btn border-0 bg-transparent shadow-none align-baseline"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 aria-expanded={isDropdownOpen}
               >
-                Services
+                บริการ
               </button>
 
-              <ul className={`dropdown-menu ${isDropdownOpen ? "show" : ""}`}>
+              <ul className={`dropdown-menu site-navbar__dropdown ${isDropdownOpen ? "show" : ""}`}>
                 <li>
-                  <Link
-                    href="/services/web"
-                    className="dropdown-item"
-                    onClick={handleCloseAll}
-                  >
-                    Web Development
+                  <Link href="/services/web" className="dropdown-item" onClick={handleCloseAll}>
+                    นอน
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/services/ai"
-                    className="dropdown-item"
-                    onClick={handleCloseAll}
-                  >
-                    AI
+                  <Link href="/services/ai" className="dropdown-item" onClick={handleCloseAll}>
+                    นั่ง
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/services/robotics"
-                    className="dropdown-item"
-                    onClick={handleCloseAll}
-                  >
-                    Robotics
+                  <Link href="/services/robotics" className="dropdown-item" onClick={handleCloseAll}>
+                    กิน
                   </Link>
                 </li>
               </ul>
             </li>
 
-            {/* About */}
             <li className="nav-item">
-              <Link
-                href="/about"
-                className="nav-link text-white"
-                onClick={handleCloseAll}
-              >
-                About
+              <Link href="/about" className="nav-link site-navbar__link" onClick={handleCloseAll}>
+                เกี่ยวกับเรา
               </Link>
             </li>
-
           </ul>
 
-          {/* Right Menu */}
-          <div className="d-flex gap-2 my-2 my-lg-0">
-            <Link
-              href="/login"
-              className="btn btn-outline-light"
-              onClick={handleCloseAll}
-            >
+          <div className="d-flex site-navbar__actions gap-2 my-2 my-lg-0">
+            <Link href="/login" className="btn btn-outline-light site-navbar__login" onClick={handleCloseAll}>
               เข้าสู่ระบบ
             </Link>
-
-            <Link
-              href="/register"
-              className="btn btn-primary"
-              onClick={handleCloseAll}
-            >
+            <Link href="/register" className="btn btn-primary site-navbar__register" onClick={handleCloseAll}>
               ลงชื่อเข้าใช้
             </Link>
           </div>

@@ -4,8 +4,7 @@ export default function Home() {
   return (
     <div >
     
-      <h2> Welcome to website </h2>
-      <p> โดย งานกลุ่ม </p>
+      <h2>Blog</h2>
     </div>
   );
 }
