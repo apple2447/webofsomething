@@ -16,7 +16,7 @@ export default function Navbar() {
     <nav className="navbar site-navbar navbar-expand-lg border-bottom border-body fixed-top z-3" data-bs-theme="dark">
       <div className="container">
         <Link href="/" className="navbar-brand site-navbar__brand" onClick={handleCloseAll}>
-          งานกลุ่มน่าจะวุ่นวาย
+          🍔 งานกลุ่มน่าจะวุ่นวาย
         </Link>
 
         <button
@@ -34,17 +34,17 @@ export default function Navbar() {
           <ul className="navbar-nav site-navbar__links me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href="/" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                หน้าแรก
+                  🏠หน้าแรก
               </Link>
             </li>
             <li className="nav-item">
               <Link href="/products" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                ผลิตภัณฑ์
+                🛍️ผลิตภัณฑ์
               </Link>
             </li>
             <li className="nav-item">
               <Link href="/blog" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                ประกาศ
+                📰ประกาศ
               </Link>
             </li>
 
@@ -55,7 +55,7 @@ export default function Navbar() {
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 aria-expanded={isDropdownOpen}
               >
-                บริการ
+                🛠️บริการ
               </button>
 
               <ul className={`dropdown-menu site-navbar__dropdown ${isDropdownOpen ? "show" : ""}`}>
@@ -79,7 +79,7 @@ export default function Navbar() {
 
             <li className="nav-item">
               <Link href="/about" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                เกี่ยวกับเรา
+                📕เกี่ยวกับเรา
               </Link>
             </li>
           </ul>
