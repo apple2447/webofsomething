@@ -42,11 +42,11 @@ export default function Login() {
         />
         
         <p>
-          <Link href="/forgot-password">Forgot Password?</Link>
+          <Link href="/forgot-password">ลืมรหัสผ่าน</Link>
         </p>
 
         <p>
-          No account? <Link href="/register">Register</Link>
+          ไม่มีบัญชีใช่ไหม? <Link href="/register">Register</Link>
         </p>
         <button>Login</button>
       </form>
