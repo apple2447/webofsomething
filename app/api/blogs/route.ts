@@ -6,12 +6,12 @@ export async function GET() {
   try {
     await connectDB();
 
-    const blogs = await blogs.find()
+    const blogDocuments = await blogs.find()
       .sort({ title: 1 })
       .lean();
 
     return NextResponse.json({
-      blogs,
+      blogs: blogDocuments,
     });
   } catch (error) {
     console.error("GET blogs error:", error); // แก้ข้อความ log ให้ตรงกัน
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const blogs = await blogs.create({
+    const blog = await blogs.create({
       title,
       slug,
       content,
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message: "เพิ่มข้อมูลสำเร็จ",
-        blogs,
+        blog,
       },
       { status: 201 }
     );
