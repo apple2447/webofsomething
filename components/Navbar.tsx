@@ -97,12 +97,6 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li className="nav-item">
-              <Link href="/contact" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                📞 ติดต่อเรา
-              </Link>
-            </li>
-
             
 
             {/* เมนูเฉพาะ Admin */}
