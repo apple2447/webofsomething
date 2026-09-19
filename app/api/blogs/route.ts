@@ -1,0 +1,78 @@
+import { NextResponse } from "next/server";
+import { connectDB } from "@/lib/mongodb";
+import blogs from "@/models/Blog";
+
+export async function GET() {
+  try {
+    await connectDB();
+
+    const blogs = await blogs.find()
+      .sort({ title: 1 })
+      .lean();
+
+    return NextResponse.json({
+      blogs,
+    });
+  } catch (error) {
+    console.error("GET blogs error:", error); // แก้ข้อความ log ให้ตรงกัน
+
+    return NextResponse.json(
+      { message: "ไม่สามารถโหลดข้อมูลได้" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    await connectDB();
+
+    const body = await request.json();
+
+    // เปลี่ยนชื่อตัวแปรให้ตรงกับการใช้งานด้านล่าง หรือใช้ title / content ไปเลย
+    const title = String(body.title ?? "").trim();
+    const slug = String(body.slug ?? "")
+      .trim()
+      .toLowerCase();
+    const content = String(body.content ?? "").trim(); // เปลี่ยนจาก description เป็น content
+
+    if (!title || !slug) {
+      return NextResponse.json(
+        { message: "กรุณากรอกชื่อและ slug" },
+        { status: 400 }
+      );
+    }
+
+    const existingblogs = await blogs.findOne({
+      $or: [{ title }, { slug }],
+    });
+
+    if (existingblogs                        ) {
+      return NextResponse.json(
+        { message: "ชื่อหรือ slug นี้มีอยู่แล้ว" },
+        { status: 409 }
+      );
+    }
+
+    const blogs = await blogs.create({
+      title,
+      slug,
+      content,
+    });
+
+    return NextResponse.json(
+      {
+        message: "เพิ่มข้อมูลสำเร็จ",
+        blogs,
+      },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("POST error:", error);
+
+    return NextResponse.json(
+      { message: "ไม่สามารถเพิ่มข้อมูลได้" },
+      { status: 500 }
+    );
+  }
+}

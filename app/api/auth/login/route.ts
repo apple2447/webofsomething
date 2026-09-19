@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { connectDB } from "@/lib/mongodb";
-import User from "@/modelss/User";
+import User from "@/models/User";
 import { createSession } from "@/lib/session";
 
 export async function POST(req: Request) {

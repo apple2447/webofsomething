@@ -1,4 +1,6 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
 
 :root {
   --color-page: #f1f5f9;
@@ -72,6 +74,10 @@ body {
 
 .site-navbar__toggler {
   border-color: var(--navbar-border);
+}
+
+.site-navbar .collapse {
+  visibility: visible;
 }
 
 .site-navbar__dropdown {

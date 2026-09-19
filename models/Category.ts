@@ -1,21 +1,34 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Model, Schema } from "mongoose";
 
-export interface ICategory extends Document {
+export interface ICategory {
   name: string;
   slug: string;
+  description?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-const CategorySchema = new Schema<ICategory>(
+const categorySchema = new Schema<ICategory>(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "กรุณากรอกชื่อหมวดหมู่"],
+      trim: true,
+      unique: true,
     },
 
     slug: {
       type: String,
-      required: true,
+      required: [true, "กรุณากรอก slug"],
+      trim: true,
+      lowercase: true,
       unique: true,
+    },
+
+    description: {
+      type: String,
+      trim: true,
+      default: "",
     },
   },
   {
@@ -23,5 +36,6 @@ const CategorySchema = new Schema<ICategory>(
   }
 );
 
-export default mongoose.modelss.Category ||
-  mongoose.models<ICategory>("Category", CategorySchema);
+const Category: Model<ICategory> = mongoose.models.Category || mongoose.model<ICategory>("Category", categorySchema);
+
+export default Category;

@@ -1,19 +1,19 @@
 import { connectDB } from "@/lib/mongodb";
-import Blog from "@/models/Blog";
+import blogs from "@/models/Blog";
 import AdminBlogList from "@/components/AdminBlogList";
 import BlogForm from "@/components/BlogForm";
 import type { BlogCardData } from "@/components/BlogCard";
 
 export const dynamic = "force-dynamic";
 
-export default async function BlogPage() {
+export default async function blogsPage() {
   await connectDB();
 
-  const blogs = await Blog.find()
+  const blogDocuments = await blogs.find()
     .sort({ createdAt: -1 })
     .lean();
 
-  const serializedBlogs: BlogCardData[] = blogs.map((blog) => ({
+  const serializedBlogs: BlogCardData[] = blogDocuments.map((blog) => ({
     _id: blog._id.toString(),
     title: String(blog.title ?? ""),
     slug: String(blog.slug ?? ""),

@@ -86,43 +86,14 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/blog" className="nav-link site-navbar__link" onClick={handleCloseAll}>
+              <Link href="/blogs" className="nav-link site-navbar__link" onClick={handleCloseAll}>
                 📰 ข่าวสารอัปเดต
               </Link>
             </li>
 
-            <li className="nav-item dropdown">
-              <button
-                type="button"
-                className="nav-link site-navbar__link dropdown-toggle btn border-0 bg-transparent shadow-none align-baseline"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                aria-expanded={isDropdownOpen}
-              >
-                🛠️ บริการ
-              </button>
-
-              <ul className={`dropdown-menu site-navbar__dropdown ${isDropdownOpen ? "show" : ""}`}>
-                <li>
-                  <Link href="/services/web" className="dropdown-item" onClick={handleCloseAll}>
-                    นอน
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/ai" className="dropdown-item" onClick={handleCloseAll}>
-                    นั่ง
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services/robotics" className="dropdown-item" onClick={handleCloseAll}>
-                    กิน
-                  </Link>
-                </li>
-              </ul>
-            </li>
-
             <li className="nav-item">
               <Link href="/about" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                📕 เกี่ยวกับเรา
+                📕 คนทำเว็ป
               </Link>
             </li>
 

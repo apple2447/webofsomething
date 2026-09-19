@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 
-export default function BlogForm() {
+export default function blogsForm() {
     const [title, setTitle] = useState("");
     const [slug, setSlug] = useState("");
     const [content, setContent] = useState("");
