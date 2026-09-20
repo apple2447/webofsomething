@@ -42,46 +42,47 @@ export default function BlogCard({ blog }: BlogCardProps) {
     const formattedDate = formatDate(blog.createdAt);
 
     return (
-        <article className="flex min-h-64 flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-            {formattedDate && (
-                <time
-                    dateTime={blog.createdAt}
-                    className="text-sm text-gray-500"
-                >
-                    {formattedDate}
-                </time>
-            )}
+        <article className="card">
+            <div className="card-body d-flex flex-column">
+                {formattedDate && (
+                    <time
+                        dateTime={blog.createdAt}
+                        className="text-muted small"
+                    >
+                        {formattedDate}
+                    </time>
+                )}
 
-            <Link
-                href={`/blogs/${blog._id}`}
-                className="group"
-            >
-                <h2 className="mt-3 text-xl font-bold text-gray-900">
+                <h2 className="card-title fs-4 mt-2">
                     {blog.title || "ไม่มีชื่อบทความ"}
                 </h2>
-            </Link>
-            {blog.slug && (
-                <p className="mt-1 text-sm text-green-700">
-                    #{blog.slug}
-                </p>
-            )}
 
-            {blog.content ? (
-                <div
-                    className="prose prose-sm mt-4 max-w-none leading-7 text-gray-600
-            prose-headings:text-gray-900
-            prose-a:text-green-700
-            prose-strong:text-gray-900
-            prose-img:rounded-xl"
-                    dangerouslySetInnerHTML={{
-                        __html: blog.content,
-                    }}
-                />
-            ) : (
-                <p className="mt-4 text-sm leading-7 text-gray-600">
-                    บทความนี้ยังไม่มีรายละเอียด
-                </p>
-            )}
+                {blog.slug && (
+                    <p className="card-text text-success small">
+                        #{blog.slug}
+                    </p>
+                )}
+
+                {blog.content ? (
+                    <div
+                        className="card-text"
+                        dangerouslySetInnerHTML={{
+                            __html: blog.content,
+                        }}
+                    />
+                ) : (
+                    <p className="card-text">
+                        บทความนี้ยังไม่มีรายละเอียด
+                    </p>
+                )}
+
+                <Link
+                    href={`/blogs/${blog._id}`}
+                    className="btn btn-primary text-white mt-3 align-self-start"
+                >
+                    อ่านเพิ่มเติม
+                </Link>
+            </div>
         </article>
     );
 }

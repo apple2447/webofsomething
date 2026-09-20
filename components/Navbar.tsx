@@ -81,11 +81,6 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="/products" className="nav-link site-navbar__link" onClick={handleCloseAll}>
-                🛍️ สินค้า
-              </Link>
-            </li>
-            <li className="nav-item">
               <Link href="/blogs" className="nav-link site-navbar__link" onClick={handleCloseAll}>
                 📰 ข่าวสารอัปเดต
               </Link>

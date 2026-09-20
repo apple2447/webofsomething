@@ -9,12 +9,12 @@ export default async function Dashboard() {
   }
 
   return (
-    <div >
-
-      <h2> Dashboard </h2>
-      <p>Welcome: {user.name as string}</p>
-      <p>Role: {user.role as string}</p>
-      <p>{user.school as string}</p>
+    <div className="auth-page">
+      <form className="auth-card">  
+        <h2> Dashboard </h2>
+        <p>ยินดีต้อนรับ : {user.name as string}</p>
+        <p>บทบาท : {user.role as string}</p>
+      </form>
     </div>
   )
 }
